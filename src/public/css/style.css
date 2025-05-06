@@ -1,0 +1,187 @@
+body {
+    background: linear-gradient(45deg, rgb(255, 255, 255) 0%, rgb(213, 213, 213) 0%, rgb(255, 255, 255) 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    height: auto;
+    min-width: 750px
+}
+
+.div-navbar {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Encabezado */
+header {
+    background: #cacbce;
+    color: #000000;
+    padding-top: 20px;
+    min-height: 50px;
+    border-bottom: #c5e6da 5px solid;
+}
+
+header a {
+    color: #000000;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+header a:hover {
+    background-color: #ffffff;
+}
+
+header ul {
+    padding: 0;
+    list-style: none;
+}
+
+header li {
+    display: inline;
+    padding: 0 20px;
+}
+
+header .div-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-bienvenida,
+.titulo-resultados,
+.titulo-preguntas {
+    background: linear-gradient(45deg, #144ba9 0%, #0082c8 100%);
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.titulo-preguntas,
+.titulo-resultados {
+    padding: 20px 0;
+    margin-bottom: 10px;
+}
+
+.section-bienvenida h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 40px;
+}
+
+.section-bienvenida p {
+    font-size: 20px;
+}
+
+.section-bienvenida .btn {
+    background: #c3bb21;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 28px;
+    border-radius: 7px;
+}
+
+.section-bienvenida .btn:hover {
+    background: #e2e2e2;
+}
+
+/* Secciones */
+.section-bienvenida {
+    padding: 60px 0;
+}
+
+.section-informacion {
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    ;
+    justify-items: center;
+}
+
+.section-informacion .informacion {
+    background-color: white;
+    text-align: center;
+    width: 70%;
+    height: fit-content;
+    border-radius: 20px;
+}
+
+.section-informacion .informacion h3 {
+    padding: 10px 0;
+    background: linear-gradient(45deg, #144ba9 0%, #0082c8 100%);
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    color: white;
+}
+
+.section-informacion .informacion p {
+    padding: 20px;
+}
+
+img {
+    width: 100%;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    background: #ced1d6;
+    color: #000000;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.div-preguntas {
+    display: flex;
+    justify-content: center;
+}
+
+.form-preguntas {
+    border-radius: 20px;
+    background: #cacbce;
+
+    padding: 20px;
+    width: 50%;
+}
+
+.pregunta {
+    margin-bottom: 15px;
+    font-size: large;
+}
+
+.pregunta p {
+    font-weight: bold;
+}
+
+.div-btn-evaluar {
+    width: 100%;
+    text-align: center;
+}
+
+.div-btn-evaluar input {
+    margin: 10px;
+}
+
+.div-resultados {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.div-resultados-recomendaciones {
+    background: #cacbce;
+    margin: 10px;
+    padding: 20px;
+    width: fit-content;
+    border-radius: 5px;
+}

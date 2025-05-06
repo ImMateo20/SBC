@@ -1,0 +1,207 @@
+<%- include('../partials/header.ejs') %>
+    <%- include('../partials/navbar.ejs') %>
+
+        <div class="titulo-preguntas">
+            <h2>Cuestionario</h2>
+        </div>
+
+
+            <div class="div-preguntas">
+                <form class="form-preguntas" action="/diagnostico" method="post">
+                    <div class="pregunta">
+                        <p>1. Ingrese su edad</p>
+                        <input id="input-edad" class="form-control w-25" type="number" name="Edad" min="0" max="120" required>
+                    </div>
+                    <div class="pregunta">
+                        <p>2. Género</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Genero" value="0" required> Hombre.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Genero" value="1"> Mujer.</label><br>
+                    </div>
+                    <div class="pregunta" id="embarazo" style="display: none;">
+                        <p>2.1 En este momento se encuentra embarazada?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Embarazo" value="0"> No</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Embarazo" value="1"> Sí</label><br>
+                    </div>
+                    <div class="pregunta">
+                        <p>3. En caso de que sepa su peso, ingréselo (kg)</p>
+                        <input class="form-control w-25" type="number" name="Peso" min="0" max="300" step="0.1" value="0">
+                    </div>
+                    <div class="pregunta">
+                        <p>4. En caso de que sepa su estatura, ingrésela (cm)</p>
+                        <input class="form-control w-25" type="number" name="Estatura" min="0" max="250" step="0.1" value="0">
+                    </div>
+                    <div class="pregunta">
+                        <p>5. ¿Con qué frecuencia siente una sed intensa durante el día?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Polidipsia" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Polidipsia" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Polidipsia" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Polidipsia" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Polidipsia" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>6. ¿Qué tan frecuente es su necesidad de orinar, incluso por la noche?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Poliuria" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Poliuria" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Poliuria" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Poliuria" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Poliuria" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>7. ¿Siente hambre constantemente, incluso después de comer?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Polifagia" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Polifagia" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Polifagia" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Polifagia" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Polifagia" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>8. ¿Se ha sentido cansado o sin energía en la mayoría de los días?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Fatiga" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Fatiga" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Fatiga" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Fatiga" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Fatiga" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>9. ¿Ha notado pérdida de peso sin haber hecho dieta o ejercicio?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="BajarPeso" value="0" required> Nada.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="BajarPeso" value="1"> Muy poco.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="BajarPeso" value="2"> Poco.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="BajarPeso" value="3"> Moderado.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="BajarPeso" value="4"> Mucho.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>10. ¿Tiene visión borrosa o dificultad para enfocar objetos?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Vision" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Vision" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Vision" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Vision" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Vision" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>11. ¿Siente hormigueo o entumecimiento en sus manos o pies?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Hormigueo" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Hormigueo" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Hormigueo" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Hormigueo" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Hormigueo" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>12. ¿Tiene infecciones frecuentes como urinarias, en piel o encías?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Infecciones" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Infecciones" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Infecciones" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Infecciones" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Infecciones" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>13. ¿Nota que sus heridas tardan en cicatrizar más de lo normal?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Heridas" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Heridas" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Heridas" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Heridas" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Heridas" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>14. ¿Ha observado manchas oscuras en su cuello, axilas u otros pliegues de la piel?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Acantosis" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Acantosis" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Acantosis" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Acantosis" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Acantosis" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>15. ¿Siente irritabilidad o cambios de humor repentinos?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Irritabilidad" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Irritabilidad" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Irritabilidad" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Irritabilidad" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Irritabilidad" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>16. ¿Le cuesta concentrarse o se siente confundido con frecuencia?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Concentracion" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Concentracion" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Concentracion" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Concentracion" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Concentracion" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta" id="preguntas-mujeres" style="display: none;">
+                        <p>17. ¿Ha tenido infecciones por hongos de forma recurrente en la zona íntima?
+                        </p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Candidiasis" value="0"> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Candidiasis" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Candidiasis" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Candidiasis" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Candidiasis" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>18. ¿Tiene sensación de resequedad o comezón persistente en la piel?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="PielSeca" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="PielSeca" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="PielSeca" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="PielSeca" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="PielSeca" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>19. ¿Ha notado resequedad en la boca durante el día o la noche?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="BocaSeca" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="BocaSeca" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="BocaSeca" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="BocaSeca" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="BocaSeca" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>20. ¿Tiene picazón frecuente en distintas zonas del cuerpo?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Picazon" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Picazon" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Picazon" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Picazon" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Picazon" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>21. ¿Tiene familiares que hayan padecido de diabetes?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="HistorialFamiliarDiabetes" value="0" required> No.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="HistorialFamiliarDiabetes" value="1"> Si.</label><br>
+                    </div>
+                    <div class="pregunta">
+                        <p>22. ¿Con que frecuencia realiza al menos 30 minutos de ejercicio?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Ejercicio" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Ejercicio" value="1"> 1 dia a la semana.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Ejercicio" value="2"> 2 a 3 dias a la semana.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Ejercicio" value="3"> 4 a 5 dias a la semana.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Ejercicio" value="4"> Todos los dias.</label>
+                    </div>
+                    <div class="pregunta">
+                        <p>23. ¿Con que frecuencia ingiere refrescos?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="IngestaRefrescos" value="0" required> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="IngestaRefrescos" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="IngestaRefrescos" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="IngestaRefrescos" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="IngestaRefrescos" value="4"> Siempre.</label>
+                    </div>
+                    <div class="pregunta" id="preguntas-ninos" style="display: none;">
+                        <p>24. En el caso de los niños, ¿Moja la cama durante la noche cuando antes no lo hacía?</p>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Mojar" value="0"> Nunca.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Mojar" value="1"> Rara vez.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Mojar" value="2"> A veces.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Mojar" value="3"> Frecuentemente.</label><br>
+                        <label class="form-label"><input class="form-check-input" type="radio" name="Mojar" value="4"> Siempre.</label>
+                    </div>
+                    <div class="div-btn-evaluar">
+                        <div>
+                            <input class="btn btn-success" type="submit" value="Procesar diagnostico">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        <script src="/js/script.js"></script>
+
+        <%- include('../partials/footer.ejs') %>
+
+            <style>
+                footer {
+                    position: relative;
+                }
+            </style>

@@ -1,0 +1,26 @@
+<%- include('../partials/header.ejs') %>
+    <%- include('../partials/navbar.ejs') %>
+
+
+        <div class="titulo-resultados">
+            <h2>Resultados</h2>
+        </div>
+
+        <div class="div-resultados">
+            <div class="div-resultados-recomendaciones">
+                <h4>Diagnostico</h4>
+                <p>
+                    <%= diagnostico.diagnostico %>
+                </p>
+                <br><br>
+                <h4>Recomendaciones</h4>
+                <p>
+                    <%= diagnostico.recomendacion %>
+                </p>
+            </div>
+            <a href="/diagnostico"><button class="btn btn-secondary">Volver al cuestionario</button></a>
+        </div>
+
+
+
+        <%- include('../partials/footer.ejs') %>
