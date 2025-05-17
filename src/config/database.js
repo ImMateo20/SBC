@@ -1,13 +1,13 @@
 import { createPool } from "mysql2/promise.js";
+import dotenv from 'dotenv'
+dotenv.config();
 
 const pool = createPool({
-  host: "localhost",
-  user: "root",
-  password: "Bboyissei19",
-  database: "proyecto_SBC",
-  waitForConnections: true,
-  connectionLimit: 10, //CHECAR ESTA PARTE
-  queueLimit: 0,
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+  port: process.env.MYSQLPORT,
 });
 
 export default pool;
