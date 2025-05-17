@@ -1,9 +1,22 @@
 import axios from "axios";
+import db from "../config/database.js";
 import evaluarRespuestas from "../utils/reglas.js";
 
 const mostrarInicio = async (req, res) => {
   try {
-    res.render("index");
+    if (typeof req.session.usuario === "undefined") {
+      // console.log("Entro aqui sin usuario");
+      res.render("index");
+      return;
+    }
+    const id = req.session.usuario.id;
+    const query = `SELECT * FROM usuarios WHERE id = ${id}`;
+    const [resultado] = await db.query(query);
+
+    // console.log("Entro aqui con usuario");
+    res.render("index", {
+      usuario: resultado[0],
+    });
   } catch (error) {
     console.error("Error al mostrar la pagina de inicio", error);
   }
@@ -11,7 +24,13 @@ const mostrarInicio = async (req, res) => {
 
 const mostrarPagDiagnostico = async (req, res) => {
   try {
-    res.render("user/diagnostico");
+    const id = req.session.usuario.id;
+    const query = `SELECT * FROM usuarios WHERE id = ${id}`;
+    const [usuario] = await db.query(query);
+
+    res.render("user/diagnostico", {
+      usuario: usuario[0],
+    });
   } catch (error) {
     console.error("Error al mostrar la pagina de diagnostico", error);
   }
@@ -41,8 +60,22 @@ const realizarDiagnostico = async (req, res) => {
 
     console.log(resultado);
 
+    const id = req.session.usuario.id;
+    const query = `SELECT * FROM usuarios WHERE id = ${id}`;
+    const [usuario] = await db.query(query);
+
+    const queryDiagnostico = `INSERT INTO evaluaciones(usuario_id,diagnostico, recomendacion) VALUES (?,?,?)`;
+
+    await db.query(queryDiagnostico, [
+      id,
+      resultado.diagnostico,
+      resultado.recomendacion,
+    ]);
+
+    // console.log("Entro aqui con usuario");
     res.render("user/resultado", {
       diagnostico: resultado,
+      usuario: usuario[0],
     });
   } catch (error) {
     console.error("Error al procesar el diagnostico");

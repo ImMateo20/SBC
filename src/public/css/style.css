@@ -1,29 +1,23 @@
+/* =================== GLOBAL =================== */
 body {
-    background: linear-gradient(45deg, rgb(255, 255, 255) 0%, rgb(213, 213, 213) 0%, rgb(255, 255, 255) 100%);
+    background: linear-gradient(45deg, rgb(144, 144, 144) 0%, rgb(177, 177, 177) 0%, rgb(211, 211, 211) 100%);
     margin: 0;
     padding: 0;
     min-height: 100vh;
     height: auto;
-    min-width: 750px
 }
 
-.div-navbar {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-}
-
-/* Encabezado */
+/* =================== NAVBAR =================== */
 header {
-    background: #cacbce;
-    color: #000000;
-    padding-top: 20px;
+    background: linear-gradient(0deg, #000000);
+    color: #ffffff;
+    padding-top: 0px;
     min-height: 50px;
     border-bottom: #c5e6da 5px solid;
 }
 
 header a {
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 16px;
@@ -34,28 +28,49 @@ header a {
 
 header a:hover {
     background-color: #ffffff;
+    color: #000000;
 }
 
 header ul {
     padding: 0;
     list-style: none;
+    margin: 0;
 }
 
 header li {
-    display: inline;
+    display: inline-block;
     padding: 0 20px;
 }
 
-header .div-navbar {
+.div-navbar {
+    background-color: black;
+    width: 100%;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    /* importante para responsivo */
 }
 
-.section-bienvenida,
+.div-navbar #link-titulo{
+    background-color: black;
+}
+
+.navbar-toggle {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* =================== BIENVENIDA =================== */
+.div-bienvenida,
 .titulo-resultados,
 .titulo-preguntas {
-    background: linear-gradient(45deg, #144ba9 0%, #0082c8 100%);
+    background: linear-gradient(45deg, #22481d 0%, #507f13 100%);
     color: #fff;
     padding: 30px 0;
     text-align: center;
@@ -67,56 +82,63 @@ header .div-navbar {
     margin-bottom: 10px;
 }
 
-.section-bienvenida h2 {
+.div-bienvenida {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 60px 0;
+}
+
+.div-bienvenida h2 {
     margin: 0;
-    padding: 0;
     font-size: 40px;
 }
 
-.section-bienvenida p {
+.div-bienvenida p {
     font-size: 20px;
 }
 
-.section-bienvenida .btn {
+.div-bienvenida .btn {
     background: #c3bb21;
     color: #333;
     padding: 10px 20px;
     text-decoration: none;
     font-size: 28px;
     border-radius: 7px;
+    transition: background 0.3s;
 }
 
-.section-bienvenida .btn:hover {
+.div-bienvenida .btn:hover {
     background: #e2e2e2;
 }
 
-/* Secciones */
-.section-bienvenida {
-    padding: 60px 0;
+.div-bienvenida img {
+    height: 120px;
 }
 
+/* =================== SECCIÓN INFORMACIÓN =================== */
 .section-informacion {
     margin: 20px 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    ;
     justify-items: center;
 }
 
 .section-informacion .informacion {
-    background-color: white;
+    background-color: rgb(236, 255, 152);
     text-align: center;
     width: 70%;
-    height: fit-content;
     border-radius: 20px;
 }
 
 .section-informacion .informacion h3 {
     padding: 10px 0;
-    background: linear-gradient(45deg, #144ba9 0%, #0082c8 100%);
+    background: linear-gradient(45deg, #22481d 0%, #507f13 100%);
     border-radius: 20px 20px 0 0;
-    width: 100%;
     color: white;
 }
 
@@ -124,21 +146,12 @@ header .div-navbar {
     padding: 20px;
 }
 
-img {
+/* =================== IMAGEN PRINCIPAL =================== */
+.main-principal img {
     width: 100%;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    display: block;
-    width: 100%;
-    background: #ced1d6;
-    color: #000000;
-    text-align: center;
-    padding: 20px 0;
-}
-
+/* =================== FORM =================== */
 .div-preguntas {
     display: flex;
     justify-content: center;
@@ -147,7 +160,6 @@ footer {
 .form-preguntas {
     border-radius: 20px;
     background: #cacbce;
-
     padding: 20px;
     width: 50%;
 }
@@ -170,6 +182,7 @@ footer {
     margin: 10px;
 }
 
+/* =================== RESULTADOS =================== */
 .div-resultados {
     display: flex;
     flex-direction: column;
@@ -184,4 +197,198 @@ footer {
     padding: 20px;
     width: fit-content;
     border-radius: 5px;
+}
+
+.contenedor-btn-diagnostico button {
+    padding: 10px;
+    background-color: #c3bb21;
+}
+
+/* =================== FOOTER =================== */
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #727272;
+    color: #000000;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* =================== RESPONSIVE (Pantallas pequeñas) =================== */
+@media screen and (max-width: 768px) {
+
+    /* Navbar */
+    .div-navbar {
+        position: relative;
+        /* para que el menú se posicione relativo a este */
+    }
+
+    .navbar-toggle {
+        display: block;
+        margin-left: auto;
+    }
+
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        width: auto;
+        /* no 100%, para que no ocupe toda la pantalla */
+        padding: 10px 20px;
+        align-items: flex-end;
+        /* para alinear links a la derecha */
+        background-color: rgba(0, 0, 0, 0.9);
+        /* fondo oscuro semi-transparente */
+        position: absolute;
+        /* para posicionar respecto al contenedor padre */
+        top: 33px;
+        /* ajusta según altura de header */
+        right: 0;
+        border-radius: 10px;
+        z-index: 1000;
+    }
+
+    .navbar-links li {
+        text-align: right;
+        padding: 10px 0;
+        width: 100%;
+        display: block;
+    }
+
+    .navbar-links a {
+        color: white;
+        font-size: 18px;
+        padding: 8px 15px;
+        display: block;
+        text-decoration: none;
+    }
+
+    .navbar-links a:hover {
+        background-color: white;
+        color: black;
+        border-radius: 6px;
+    }
+
+    .navbar-links.show {
+        display: flex;
+    }
+
+    header li {
+        display: block;
+        padding: 10px 20px;
+    }
+
+    /* Bienvenida */
+    .div-bienvenida {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .div-bienvenida img {
+        height: 100px;
+        margin-bottom: 10px;
+    }
+
+    .contenedor-bienvenida h2 {
+        font-size: 30px;
+    }
+
+    .contenedor-bienvenida p {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+
+    /* Sección información */
+    .section-informacion {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .section-informacion .informacion {
+        width: 90% !important;
+    }
+
+    /* Imagen principal */
+    .main-principal img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Botón diagnóstico */
+    .contenedor-btn-diagnostico {
+        padding: 10px;
+    }
+
+    .contenedor-btn-diagnostico .btn {
+        font-size: 20px;
+        padding: 12px 24px;
+    }
+
+    /* Bienvenida ajustes importantes */
+    .div-bienvenida {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .div-bienvenida img {
+        height: 100px;
+        margin: 10px 0;
+    }
+
+    .contenedor-bienvenida {
+        width: 90%;
+    }
+
+    .contenedor-bienvenida h2 {
+        font-size: 28px;
+    }
+
+    .contenedor-bienvenida p {
+        font-size: 16px;
+    }
+
+    /* Formulario iniciar sesión */
+    .main-iniciar-sesion {
+        padding: 20px 10px;
+    }
+
+    .form-iniciar-sesion {
+        padding: 20px 15px;
+        max-width: 100%;
+    }
+
+    .form-iniciar-sesion h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-iniciar-sesion input[type="submit"] {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .form-iniciar-sesion span {
+        font-size: 0.85rem;
+    }
+
+    .div-bienvenida img:nth-of-type(2) {
+        display: none;
+    }
+    
+
+    /* Footer fix (evitar solapamiento) */
+    footer {
+        position: absolute;
+    }
+}
+
+#link-titulo a:hover{
+    background-color: none;
 }

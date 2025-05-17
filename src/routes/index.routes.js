@@ -4,10 +4,11 @@ import {
   mostrarPagDiagnostico,
   realizarDiagnostico,
 } from "../controllers/indexController.js";
+import { estaLogeado } from "../middlewares/authMiddlewares.js";
 const router = express.Router();
 
 router.get("/", mostrarInicio);
-router.get("/diagnostico", mostrarPagDiagnostico);
-router.post("/diagnostico", realizarDiagnostico);
+router.get("/diagnostico", estaLogeado, mostrarPagDiagnostico);
+router.post("/diagnostico", estaLogeado, realizarDiagnostico);
 
 export default router;

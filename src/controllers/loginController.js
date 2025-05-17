@@ -8,7 +8,7 @@ const mostrarLogin = (req, res) => {
 const procesarLogin = async (req, res) => {
   const { email, password } = req.body;
   // console.log(req.body);
-  const queryUsuario = `SELECT * FROM usuario WHERE email='${email}'`;
+  const queryUsuario = `SELECT * FROM usuarios WHERE email='${email}'`;
   const [resultado] = await db.query(queryUsuario);
 
   if (resultado.length < 1) {

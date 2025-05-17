@@ -8,9 +8,9 @@ const mostrarSignin = (req, res) => {
 const procesarSignin = async (req, res) => {
   try {
     const usuario = req.body;
-    console.log(usuario)
+    console.log(usuario);
 
-    const queryEmail = `SELECT * FROM usuario WHERE email='${usuario.email}'`;
+    const queryEmail = `SELECT * FROM usuarios WHERE email='${usuario.email}'`;
     const [yaEstaRegistrado] = await db.query(queryEmail);
 
     // console.log(yaEstaRegistrado)
@@ -26,7 +26,7 @@ const procesarSignin = async (req, res) => {
     // console.log(datos);
 
     const queryRegistro =
-      "INSERT INTO usuario(nombre,apellido_paterno,apellido_materno,email,password,telefono,estado,ciudad,colonia,calle,codigo_postal) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+      "INSERT INTO usuarios(nombre,apellido_paterno,apellido_materno,email,password) VALUES (?,?,?,?,?)";
 
     const [resultado] = await db.query(queryRegistro, [
       usuario.nombre,
@@ -34,12 +34,6 @@ const procesarSignin = async (req, res) => {
       usuario.apellido_materno,
       usuario.email,
       hash,
-      usuario.telefono,
-      usuario.estado,
-      usuario.ciudad,
-      usuario.colonia,
-      usuario.calle,
-      usuario.codigo_postal,
     ]);
 
     const newId = await resultado.insertId;

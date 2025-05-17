@@ -3,12 +3,16 @@
 
         <section class="section-bienvenida">
             <div class="div-bienvenida">
-                <h2>Bienvenido</h2>
-                <p>¡Aquí tu salud nos importa mucho!</p>
-                <p>Entérate de lo que tienes que saber acerca de la diabetes y los tipos que existen.</p>
+                <img src="/img/logo19.png" alt="">
+                <div class="contenedor-bienvenida">
+                    <h2>Bienvenido</h2>
+                    <p>¡Aquí tu salud nos importa mucho!</p>
+                    <p>Entérate de lo que tienes que saber acerca de la diabetes y los tipos que existen.</p>
+                </div>
+                <img src="/img/logo19.png" alt="">
             </div>
         </section>
-        <main>
+        <main class="main-principal">
             <img src="/img/fondo.jpg" alt="">
         </main>
 
@@ -25,7 +29,7 @@
                     insulina ayuda a trasladar la glucosa del torrente sanguíneo a las células, donde se puede
                     usar como energía.
                 </p>
-                <a href="/">Conoce más <i class="bi bi-arrow-right-circle-fill"></i></a>
+                <!-- <a href="/">Conoce más <i class="bi bi-arrow-right-circle-fill"></i></a> -->
             </div>
             <div class="informacion">
                 <h3>
@@ -37,9 +41,14 @@
                     más frecuente en adultos; la gestacional, que aparece durante el embarazo; y la tipo LADA, una forma
                     autoinmune de aparición lenta en adultos.
                 </p>
-                <a href="/">Conoce más <i class="bi bi-arrow-right-circle-fill"></i></a>
+                <!-- <a href="/">Conoce más <i class="bi bi-arrow-right-circle-fill"></i></a> -->
             </div>
         </section>
+        <div class="contenedor-btn-diagnostico" style="display: block;text-align:center;margin: 20px;">
+            <a href="/diagnostico">
+                <button class="btn">Ir al diagnostico</button>
+            </a>
+        </div>
 
 
         <%- include('./partials/footer.ejs') %>
