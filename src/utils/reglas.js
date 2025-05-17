@@ -10,7 +10,7 @@ const evaluarRespuestas = (respuestas, edad) => {
       },
       diagnostico: "Alerta Prediabetes",
       recomendacion:
-        "Mejora tu alimentación, realiza chequeos periódicos y mantente hidratado con agua natural.",
+        "Mejora tu alimentación, realiza chequeos periódicos, haz actividad física regular, reduce el consumo de azúcares refinados y mantente hidratado con agua natural.",
     },
     {
       condiciones: {

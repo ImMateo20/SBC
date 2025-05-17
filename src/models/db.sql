@@ -37,6 +37,12 @@ CREATE TABLE
         edad_min INT DEFAULT NULL,
         edad_max INT DEFAULT NULL
     );
+CREATE TABLE
+    reglas (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        diagnostico VARCHAR(100),
+        recomendacion TEXT,
+    );
 
 CREATE TABLE
     condiciones (
