@@ -599,6 +599,10 @@ footer {
         width: 100%;
     }
 
+    #img-favicon{
+        width: 30px;
+    }
+
     footer {
         position: relative;
         bottom: 0;
