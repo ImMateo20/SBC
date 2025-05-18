@@ -1,6 +1,13 @@
 import express from "express";
-import { mostrarPerfil } from "../controllers/userController.js";
+import {
+  mostrarPagDiagnostico,
+  mostrarResultados,
+  realizarDiagnosticoSQL,
+} from "../controllers/userController.js";
+import { estaLogeado } from "../middlewares/authMiddlewares.js";
 const router = express.Router();
 
-router.get("/perfil", mostrarPerfil);
+router.get("/diagnostico", estaLogeado, mostrarPagDiagnostico);
+router.post("/diagnostico", estaLogeado, realizarDiagnosticoSQL);
+router.get("/resultados", estaLogeado, mostrarResultados);
 export default router;

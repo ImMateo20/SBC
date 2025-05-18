@@ -1,0 +1,88 @@
+<%- include('../partials/header.ejs') %>
+    <%- include('../partials/navbar.ejs') %>
+
+        <main class="main-principal">
+            <div class="contenedor-grafica">
+                <canvas id="graficaDiagnosticos"></canvas>
+            </div>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            async function cargarGrafica() {
+                try {
+                    const res = await fetch('/admin/obtener-evaluaciones');
+                    const datos = await res.json();
+
+                    // Ordenar datos de mayor a menor según cantidad
+                    datos.sort((a, b) => b.cantidad - a.cantidad);
+
+                    const labels = datos.map(d => d.diagnostico);
+                    const valores = datos.map(d => d.cantidad);
+
+                    const ctx = document.getElementById('graficaDiagnosticos').getContext('2d');
+
+                    const gradiente = ctx.createLinearGradient(0, 0, 0, 400);
+                    gradiente.addColorStop(0, '#22481d');
+                    gradiente.addColorStop(1, '#507f13');
+
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Cantidad de Diagnósticos',
+                                data: valores,
+                                backgroundColor: gradiente,
+                                borderColor: 'black',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    ticks: {
+                                        stepSize: 1, // ← Asegura que solo muestre enteros
+                                        precision: 0, // ← Previene decimales
+                                        callback: function (value) {
+                                            return Number.isInteger(value) ? value : null; // ← Oculta si no es entero
+                                        },
+                                        color: '#000',
+                                        font: {
+                                            size: 16
+                                        }
+                                    }
+                                },
+                                x: {
+                                    ticks: {
+                                        color: '#000',
+                                        font: {
+                                            size: 16
+                                        }
+                                    }
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        color: '#000',
+                                        font: {
+                                            size: 18
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    });
+                } catch (error) {
+                    console.error('Error al cargar los datos de la gráfica:', error);
+                }
+            }
+
+
+            window.addEventListener('DOMContentLoaded', cargarGrafica);
+        </script>
+
+        <%- include('../partials/footer.ejs') %>

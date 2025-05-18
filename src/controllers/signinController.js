@@ -8,25 +8,48 @@ const mostrarSignin = (req, res) => {
 const procesarSignin = async (req, res) => {
   try {
     const usuario = req.body;
-    console.log(usuario);
 
-    const queryEmail = `SELECT * FROM usuarios WHERE email='${usuario.email}'`;
-    const [yaEstaRegistrado] = await db.query(queryEmail);
+    const errores = [];
+    if (usuario.nombre.length > 50)
+      errores.push("El nombre es demasiado largo");
+    if (usuario.apellido_paterno.length > 50)
+      errores.push("El apellido paterno es demasiado largo");
+    if (usuario.apellido_materno.length > 50)
+      errores.push("El apellido materno es demasiado largo");
+    if (usuario.email.length > 50) errores.push("El correo es demasiado largo");
 
-    // console.log(yaEstaRegistrado)
+    const soloLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+
+    if (!soloLetras.test(usuario.nombre))
+      errores.push("El nombre solo debe contener letras y espacios");
+    if (!soloLetras.test(usuario.apellido_paterno))
+      errores.push("El apellido paterno solo debe contener letras y espacios");
+    if (!soloLetras.test(usuario.apellido_materno))
+      errores.push("El apellido materno solo debe contener letras y espacios");
+
+    if (errores.length > 0) {
+      return res.status(400).render("auth/signin", {
+        message: errores.join(". "),
+      });
+    }
+
+    const [yaEstaRegistrado] = await db.query(
+      `SELECT * FROM usuarios WHERE email = ?`,
+      [usuario.email]
+    );
+
     if (yaEstaRegistrado.length > 0) {
       return res.status(400).render("auth/signin", {
         message: "Ya existe un usuario con este correo",
       });
     }
 
-    const salt = await bcrypt.genSalt(10); //Generar un patrón
-    const hash = await bcrypt.hash(usuario.password, salt); //Se cifra
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(usuario.password, salt);
 
-    // console.log(datos);
-
-    const queryRegistro =
-      "INSERT INTO usuarios(nombre,apellido_paterno,apellido_materno,email,password) VALUES (?,?,?,?,?)";
+    const queryRegistro = `
+      INSERT INTO usuarios(nombre, apellido_paterno, apellido_materno, email, password)
+      VALUES (?, ?, ?, ?, ?)`;
 
     const [resultado] = await db.query(queryRegistro, [
       usuario.nombre,
@@ -36,13 +59,7 @@ const procesarSignin = async (req, res) => {
       hash,
     ]);
 
-    const newId = await resultado.insertId;
-    console.log("Nuevo Id = ", newId);
-
-    req.session.usuario = {
-      id: newId,
-    };
-
+    req.session.usuario = { id: resultado.insertId };
     res.redirect("/");
   } catch (error) {
     console.error(`Error en la consulta: `, error);

@@ -1,59 +1,64 @@
 <%- include('./partials/header.ejs') %>
     <%- include('./partials/navbar.ejs') %>
 
-        <section class="section-bienvenida">
-            <div class="div-bienvenida">
-                <img src="/img/logo19.png" alt="">
-                <div class="contenedor-bienvenida">
-                    <h2>Bienvenido</h2>
-                    <p>¡Aquí tu salud nos importa mucho!</p>
-                    <p>Entérate de lo que tienes que saber acerca de la diabetes y los tipos que existen.</p>
-                </div>
-                <img src="/img/logo19.png" alt="">
-            </div>
-        </section>
         <main class="main-principal">
-            <img src="/img/fondo.jpg" alt="">
+            <section class="section-bienvenida">
+                <div class="div-bienvenida">
+                    <img src="/img/logo19.png" alt="">
+                    <div class="contenedor-bienvenida">
+                        <h2>Bienvenido</h2>
+                        <p>¡Aquí tu salud nos importa mucho!</p>
+                        <p>Entérate de lo que tienes que saber acerca de la diabetes y los tipos que existen.</p>
+                    </div>
+                    <img src="/img/logo19.png" alt="">
+                </div>
+            </section>
+            <section class="section-imagen">
+                <img src="/img/fondo.jpg" alt="">
+            </section>
+
+            <section class="section-informacion">
+                <div class="informacion">
+                    <h3>
+                        ¿Qué es la diabetes?
+                    </h3>
+                    <p>
+                        La diabetes, también conocida como diabetes mellitus, es una enfermedad en la que los
+                        niveles de glucosa (o azúcar) en sangre son demasiado altos. La glucosa es la principal
+                        fuente de energía del cuerpo. Su cuerpo puede producir glucosa, pero también proviene
+                        de los alimentos que consume. La insulina es una hormona producida por el páncreas. La
+                        insulina ayuda a trasladar la glucosa del torrente sanguíneo a las células, donde se puede
+                        usar como energía.
+                    </p>
+                    <!-- <a href="/">Conoce más <i class="bi bi-arrow-right-circle-fill"></i></a> -->
+                </div>
+                <div class="informacion">
+                    <h3>
+                        ¿Qué tipos existen?
+                    </h3>
+                    <p>
+                        Existen varios tipos de diabetes, entre los más comunes se encuentran: la tipo 1, de origen
+                        autoinmune y generalmente diagnosticada en jóvenes; la tipo 2, asociada a malos hábitos de vida
+                        y
+                        más frecuente en adultos; la gestacional, que aparece durante el embarazo; y la tipo LADA, una
+                        forma
+                        autoinmune de aparición lenta en adultos.
+                    </p>
+                    <!-- <a href="/">Conoce más <i class="bi bi-arrow-right-circle-fill"></i></a> -->
+                </div>
+            </section>
+            <div class="contenedor-btn-diagnostico" style="display: block;text-align:center;margin: 20px;">
+                <% if (yaEvaluado) { %>
+                    <a href="/user/resultados">
+                        <button class="btn">Ver resultados</button>
+                    </a>
+                    <% } else { %>
+                        <a href="/user/diagnostico">
+                            <button class="btn">Ir al diagnostico</button>
+                        </a>
+                        <% } %>
+            </div>
+
         </main>
 
-        <section class="section-informacion">
-            <div class="informacion">
-                <h3>
-                    ¿Qué es la diabetes?
-                </h3>
-                <p>
-                    La diabetes, también conocida como diabetes mellitus, es una enfermedad en la que los
-                    niveles de glucosa (o azúcar) en sangre son demasiado altos. La glucosa es la principal
-                    fuente de energía del cuerpo. Su cuerpo puede producir glucosa, pero también proviene
-                    de los alimentos que consume. La insulina es una hormona producida por el páncreas. La
-                    insulina ayuda a trasladar la glucosa del torrente sanguíneo a las células, donde se puede
-                    usar como energía.
-                </p>
-                <!-- <a href="/">Conoce más <i class="bi bi-arrow-right-circle-fill"></i></a> -->
-            </div>
-            <div class="informacion">
-                <h3>
-                    ¿Qué tipos existen?
-                </h3>
-                <p>
-                    Existen varios tipos de diabetes, entre los más comunes se encuentran: la tipo 1, de origen
-                    autoinmune y generalmente diagnosticada en jóvenes; la tipo 2, asociada a malos hábitos de vida y
-                    más frecuente en adultos; la gestacional, que aparece durante el embarazo; y la tipo LADA, una forma
-                    autoinmune de aparición lenta en adultos.
-                </p>
-                <!-- <a href="/">Conoce más <i class="bi bi-arrow-right-circle-fill"></i></a> -->
-            </div>
-        </section>
-        <div class="contenedor-btn-diagnostico" style="display: block;text-align:center;margin: 20px;">
-            <a href="/diagnostico">
-                <button class="btn">Ir al diagnostico</button>
-            </a>
-        </div>
-
-
         <%- include('./partials/footer.ejs') %>
-            <style>
-                footer {
-                    position: relative;
-                }
-            </style>

@@ -1,15 +1,18 @@
 <%- include('../partials/header.ejs') %>
     <%- include('../partials/navbar.ejs') %>
 
+
+        <main class="main-principal">
         <div class="main-iniciar-sesion">
 
             <% if (typeof message !=='undefined' ) { %>
-                <div class="alert alert-danger alert-dismissible fade show w-25 text-center" role="alert">
+                <div class="alert alert-danger alert-dismissible fade show text-center contenedor-mensaje" role="alert">
                     <%= message %>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 <% } %>
 
-                    <form class="form-registrarse p-2 rounded-3" action="/signin" method="post">
+                    <form class="form-registrarse p-2 rounded-3" action="/auth/signin" method="post">
                         <h2 style="align-self: center;">Registrarse</h2>
                         <div class="inputs-registro">
                             <div>
@@ -32,11 +35,13 @@
                         </div>
                         <input class="form-control btn btn-primary" type="submit" value="Registrarse"
                             id="boton-registrarse">
-                        <span style="align-self: center;"">¿Ya tienes una cuenta? <a href=" /login">Inicia sesión
+                        <span style="align-self: center;"">¿Ya tienes una cuenta? <a href="/auth/login">Inicia sesión
                             aqui</a></span>
 
                     </form>
         </div>
+        </main>
+
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {

@@ -1,19 +1,23 @@
-/* =================== GLOBAL =================== */
 body {
     background: linear-gradient(45deg, rgb(144, 144, 144) 0%, rgb(177, 177, 177) 0%, rgb(211, 211, 211) 100%);
-    margin: 0;
+    margin: 50;
     padding: 0;
     min-height: 100vh;
     height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-/* =================== NAVBAR =================== */
+
+
 header {
     background: linear-gradient(0deg, #000000);
     color: #ffffff;
     padding-top: 0px;
     min-height: 50px;
     border-bottom: #c5e6da 5px solid;
+    width: 100%;
+    margin-top: 0;
 }
 
 header a {
@@ -43,6 +47,7 @@ header li {
 }
 
 .div-navbar {
+    position: fixed;
     background-color: black;
     width: 100%;
     margin: auto;
@@ -50,10 +55,10 @@ header li {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    /* importante para responsivo */
+
 }
 
-.div-navbar #link-titulo{
+.div-navbar #link-titulo {
     background-color: black;
 }
 
@@ -66,8 +71,19 @@ header li {
     cursor: pointer;
 }
 
-/* =================== BIENVENIDA =================== */
-.div-bienvenida,
+
+.main-principal {
+    min-height: 80vh;
+    margin-top: 30px;
+}
+
+.div-bienvenida {
+    background: linear-gradient(0deg, #1c3c18, #36560c, #5b9016, #c4b548);
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}
+
 .titulo-resultados,
 .titulo-preguntas {
     background: linear-gradient(45deg, #22481d 0%, #507f13 100%);
@@ -119,7 +135,7 @@ header li {
     height: 120px;
 }
 
-/* =================== SECCIÓN INFORMACIÓN =================== */
+
 .section-informacion {
     margin: 20px 0;
     display: grid;
@@ -146,15 +162,42 @@ header li {
     padding: 20px;
 }
 
-/* =================== IMAGEN PRINCIPAL =================== */
-.main-principal img {
+
+.section-imagen img {
     width: 100%;
 }
 
-/* =================== FORM =================== */
+
+.main-iniciar-sesion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.form-iniciar-sesion {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-registrarse {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-iniciar-sesion [type="submit"] {
+    margin-top: 10px;
+    font-size: 1rem;
+    padding: 10px;
+}
+
 .div-preguntas {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .form-preguntas {
@@ -182,7 +225,7 @@ header li {
     margin: 10px;
 }
 
-/* =================== RESULTADOS =================== */
+
 .div-resultados {
     display: flex;
     flex-direction: column;
@@ -204,9 +247,85 @@ header li {
     background-color: #c3bb21;
 }
 
-/* =================== FOOTER =================== */
+.contenedor-mensaje {
+    display: block;
+    width: 25%;
+}
+
+
+
+#link-titulo a:hover {
+    background-color: none;
+}
+
+.contenedor-grafica {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70vh;
+}
+
+.contenedor-grafica canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contenedor-tabla-diag {
+    align-self: center;
+    justify-self: center;
+    width: 90%;
+    text-align: center;
+}
+
+
+
+.div-resultados-recomendaciones h4 {
+    background: linear-gradient(45deg, #22481d 0%, #507f13 100%);
+    color: white;
+    margin-top: 0;
+    border-radius: 5px 5px 0 0;
+
+}
+
+.div-resultados-recomendaciones p {
+    padding: 25px 0;
+}
+
+.div-resultado-diagnostico,
+.div-resultado-recomendacion,
+.div-resultado-informacion {
+    background-color: rgb(236, 255, 152);
+    height: fit-content;
+    width: 700px;
+    border-radius: 15px;
+}
+
+.div-resultado-diagnostico img{
+    width: 90%;
+}
+
+thead {
+    background: linear-gradient(45deg, #22481d 0%, #507f13 100%);
+    color: white;
+    text-align: center;
+}
+
+tbody {
+    background-color: rgb(236, 255, 152);
+
+}
+
+th,
+td {
+    border: 1px solid black;
+}
+
+
 footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     background: #727272;
@@ -215,13 +334,14 @@ footer {
     padding: 20px 0;
 }
 
-/* =================== RESPONSIVE (Pantallas pequeñas) =================== */
+
+
 @media screen and (max-width: 768px) {
 
-    /* Navbar */
+
     .div-navbar {
-        position: relative;
-        /* para que el menú se posicione relativo a este */
+        position: fixed;
+
     }
 
     .navbar-toggle {
@@ -233,16 +353,16 @@ footer {
         display: none;
         flex-direction: column;
         width: auto;
-        /* no 100%, para que no ocupe toda la pantalla */
+
         padding: 10px 20px;
         align-items: flex-end;
-        /* para alinear links a la derecha */
+
         background-color: rgba(0, 0, 0, 0.9);
-        /* fondo oscuro semi-transparente */
+
         position: absolute;
-        /* para posicionar respecto al contenedor padre */
+
         top: 33px;
-        /* ajusta según altura de header */
+
         right: 0;
         border-radius: 10px;
         z-index: 1000;
@@ -278,7 +398,7 @@ footer {
         padding: 10px 20px;
     }
 
-    /* Bienvenida */
+
     .div-bienvenida {
         flex-direction: column;
         align-items: center;
@@ -300,7 +420,7 @@ footer {
         margin: 5px 0;
     }
 
-    /* Sección información */
+
     .section-informacion {
         grid-template-columns: 1fr;
         padding: 10px;
@@ -314,13 +434,13 @@ footer {
         width: 90% !important;
     }
 
-    /* Imagen principal */
-    .main-principal img {
+
+    .section-imagen img {
         max-width: 100%;
         height: auto;
     }
 
-    /* Botón diagnóstico */
+
     .contenedor-btn-diagnostico {
         padding: 10px;
     }
@@ -330,7 +450,7 @@ footer {
         padding: 12px 24px;
     }
 
-    /* Bienvenida ajustes importantes */
+
     .div-bienvenida {
         flex-direction: column !important;
         align-items: center !important;
@@ -355,14 +475,18 @@ footer {
         font-size: 16px;
     }
 
-    /* Formulario iniciar sesión */
+
     .main-iniciar-sesion {
         padding: 20px 10px;
+        width: 100%;
     }
 
     .form-iniciar-sesion {
         padding: 20px 15px;
-        max-width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        width: 100%;
     }
 
     .form-iniciar-sesion h2 {
@@ -374,21 +498,109 @@ footer {
         padding: 10px;
     }
 
-    .form-iniciar-sesion span {
-        font-size: 0.85rem;
+    .form-registrarse {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
     }
 
     .div-bienvenida img:nth-of-type(2) {
         display: none;
     }
-    
 
-    /* Footer fix (evitar solapamiento) */
-    footer {
-        position: absolute;
+    .div-preguntas {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
-}
 
-#link-titulo a:hover{
-    background-color: none;
+    .div-preguntas form {
+        width: 100%;
+    }
+
+    .contenedor-mensaje {
+        display: block;
+        width: 100%;
+    }
+
+    .navbar-links li {
+        width: max-content;
+    }
+
+
+
+    .navbar-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .navbar-toggle .bar {
+        height: 3px;
+        width: 100%;
+        background-color: #000;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+    }
+
+    .navbar-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .navbar-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navbar-toggle.active .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .main-principal {
+        margin-top: 10px;
+    }
+
+    .div-resultado-diagnostico,
+    .div-resultado-recomendacion,
+    .div-resultado-informacion {
+        width: 100%;
+    }
+
+    .contenedor-grafica {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        width: 100%;
+        height: 80vh;
+    }
+
+    .contenedor-grafica canvas{
+        width: 100%;
+        height: 100%;
+    }
+
+    .contenedor-tabla-diag{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .contenedor-tabla-diag table{
+        width: 100%;
+    }
+
+    footer {
+        position: relative;
+        bottom: 0;
+    }
 }
